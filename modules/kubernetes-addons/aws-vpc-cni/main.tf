@@ -1,7 +1,7 @@
 locals {
   name = "vpc-cni"
 
-  create_irsa     = try(var.addon_config.service_account_role_arn == "", true)
+  create_irsa     = try(var.addon_config.create_rsa, true)
   cni_ipv6_policy = var.enable_ipv6 ? [aws_iam_policy.cni_ipv6_policy[0].arn] : []
 }
 
